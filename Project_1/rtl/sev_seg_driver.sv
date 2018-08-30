@@ -13,6 +13,6 @@ module sev_seg_driver(
     
     display_decoder decoder0(.data_i(in0_i), .ltr_i(ltr_i), .data_o(in0));
     display_decoder decoder1(.data_i(in1_i), .ltr_i(ltr_i), .data_o(in1));
-    display_decoder decoder2(.data_i(in2_i), .ltr_i(0), .data_o(in2));
-    display_decoder decoder3(.data_i(in3_i), .ltr_i(0), .data_o(in3));
+    display_decoder decoder2(.data_i(in2_i), .ltr_i(ltr_i), .data_o(in2));
+    display_decoder decoder3(.data_i(in3_i), .ltr_i(ltr_i), .data_o(in3));
 endmodule
