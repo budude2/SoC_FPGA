@@ -1,3 +1,3 @@
 # SoC FPGA Assignments Repo
 
-## Proj_1: Reaction Timer
+## Project_1: Reaction Timer
