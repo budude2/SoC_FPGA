@@ -6,3 +6,13 @@ Project_1/proj_01/proj_1\.ip_user_files/
 Project_1/proj_01/proj_1\.runs/
 
 Project_1/proj_01/proj_1\.sim/
+
+Project_1/proj_01/\.Xil/
+
+Project_1/proj_01/proj_1\.cache/
+
+*.jou
+
+*.log
+
+*.str
