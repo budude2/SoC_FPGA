@@ -2,8 +2,8 @@
 
 module stop_watch_top
     (
-    input logic BTNL, BTNC, BTNR, CLK100MHZ,
-    output logic [7:0] AN, SSEG
+        input logic BTNL, BTNC, BTNR, CLK100MHZ,
+        output logic [7:0] AN, SSEG
     );
     
     logic [3:0] d2, d1, d0;

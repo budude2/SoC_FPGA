@@ -17,9 +17,10 @@ module LFSR_fib168pi(
   localparam key3=28'b0011010011000100110001100110;
   localparam key4=28'b0010100010111000000011011100;
   logic [167:0] state, next_state;
-  logic [3:0] polynomial, polynomial_truncated;
+  logic polynomial;
+  logic [3:0] rand_val, rand_val_trunc;
 
-  assign polynomial = state[167:164]^state[163:160]^state[159:156]^state[155:152];
+  assign polynomial = state[167]^state[165]^state[152]^state[151];
   assign next_state = {state[166:0],polynomial};
 
   always_ff @(posedge(clk), posedge(reset))
@@ -28,13 +29,14 @@ module LFSR_fib168pi(
     else
       state <= next_state;
 
-  always_comb begin
-    if(polynomial[3] & polynomial[2] & polynomial[1])
-        polynomial_truncated = polynomial & 4'b1101;
-    else
-        polynomial_truncated = polynomial;
-  end
-    
+  assign rand_val = state[3:0];
 
-  assign r = polynomial_truncated + 2;
+  always_comb begin
+    if(rand_val[3] & rand_val[2] & rand_val[1])
+        rand_val_trunc = rand_val & 4'b1101;
+    else
+        rand_val_trunc = rand_val;
+  end
+
+  assign r = rand_val_trunc + 2;
   endmodule
