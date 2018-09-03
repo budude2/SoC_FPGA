@@ -24,7 +24,7 @@ module lfsr_fib168_tf;
 
 logic clk=0, reset=0;
 logic [27:0] seed;
-logic r;
+logic [3:0] r;
 
 LFSR_fib168pi DUT(
  .clk(clk),
