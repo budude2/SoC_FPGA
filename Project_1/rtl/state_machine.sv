@@ -102,7 +102,10 @@ always_comb begin
                 enable_counter = 0;
                 clear_counter  = 0;
                 
-                if((stop_btn == 1'b1) || ((digit3 == 1) && (digit2 == 0) && (digit1 == 0) && (digit0 == 0))) begin
+                if(stop_btn == 1'b1) begin
+                    next_state = stop;
+                end
+                else if((digit3 == 1) && (~|digit2) && (~|digit1) && (~|digit0)) begin
                     next_state = stop;
                 end
             end
