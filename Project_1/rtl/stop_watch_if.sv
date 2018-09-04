@@ -6,7 +6,7 @@ module stop_watch_if
    );
 
    // declaration
-   //localparam  DVSR = 5000000;
+   //localparam  DVSR = 100000;
    localparam DVSR = 100000;
    logic [22:0] ms_reg;
    logic [22:0] ms_next;
@@ -26,7 +26,7 @@ module stop_watch_if
    end
 
    // next-state logic
-   // 0.1 sec tick generator: mod-5000000
+   // 0.1 sec tick generator: mod-100000
    assign ms_next = (clr || (ms_reg == DVSR && go)) ? 4'b0 :
                     (go) ? ms_reg + 1 : ms_reg;
    assign ms_tick = (ms_reg == DVSR) ? 1'b1 : 1'b0;
