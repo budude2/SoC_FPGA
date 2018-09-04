@@ -12,10 +12,10 @@ module LFSR_fib168pi(
   input logic [27:0] seed,
   output logic [3:0] r
 );
-  localparam key1=28'b1100100100001111110110101010;
-  localparam key2=28'b0010001000010110100011000010;
-  localparam key3=28'b0011010011000100110001100110;
-  localparam key4=28'b0010100010111000000011011100;
+  localparam key1 = 28'b1100100100001111110110101010;
+  localparam key2 = 28'b0010001000010110100011000010;
+  localparam key3 = 28'b0011010011000100110001100110;
+  localparam key4 = 28'b0010100010111000000011011100;
   logic [167:0] state, next_state;
   logic polynomial;
   logic [3:0] rand_val, rand_val_trunc;
@@ -25,7 +25,7 @@ module LFSR_fib168pi(
 
   always_ff @(posedge(clk), posedge(reset))
     if(reset)
-      state <= {seed,~seed,key1^seed,key2^seed,key3^seed,key4^seed};
+      state <= {seed, ~seed, key1^seed, key2^seed, key3^seed, key4^seed};
     else
       state <= next_state;
 
@@ -39,4 +39,4 @@ module LFSR_fib168pi(
   end
 
   assign r = rand_val_trunc + 2;
-  endmodule
+endmodule

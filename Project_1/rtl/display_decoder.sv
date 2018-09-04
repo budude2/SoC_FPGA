@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 
 module display_decoder(
-    input logic [3:0] data_i,
     input logic ltr_i,
+    input logic [3:0] data_i,
     output logic [7:0] data_o
     );
     

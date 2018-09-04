@@ -31,18 +31,18 @@ always_comb begin
     case(curr_state)
         init:
             begin
-                ltr_flag = 1;
-                digit0 = 4'b1010;
-                digit1 = 4'b0101;
-                digit2 = 4'b1111;
-                digit3 = 4'b1111;
-                led0 = 0;
-                timer_go = 0;
+                ltr_flag  = 1;
+                digit0    = 4'b1010;
+                digit1    = 4'b0101;
+                digit2    = 4'b1111;
+                digit3    = 4'b1111;
+                led0      = 0;
+                timer_go  = 0;
                 timer_clr = 1;
                 
                 enable_counter = 0;
-                load_counter = 0;
-                clear_counter = 1;
+                load_counter   = 0;
+                clear_counter  = 1;
                 
                 if(start_btn == 1'b1) begin
                     next_state = start;
@@ -50,35 +50,35 @@ always_comb begin
             end
         start:
             begin
-                ltr_flag = 0;
-                digit0 = 4'b1111;
-                digit1 = 4'b1111;
-                digit2 = 4'b1111;
-                digit3 = 4'b1111;
-                led0 = 0;
-                timer_go = 0;
+                ltr_flag  = 0;
+                digit0    = 4'b1111;
+                digit1    = 4'b1111;
+                digit2    = 4'b1111;
+                digit3    = 4'b1111;
+                led0      = 0;
+                timer_go  = 0;
                 timer_clr = 0;
                 
                 enable_counter = 0;
-                clear_counter = 0;
-                load_counter = 1;
+                clear_counter  = 0;
+                load_counter   = 1;
                 
                 next_state = delay;
             end
         delay:
             begin
-                ltr_flag = 0;
-                digit0 = 4'b1111;
-                digit1 = 4'b1111;
-                digit2 = 4'b1111;
-                digit3 = 4'b1111;
-                led0 = 0;
-                timer_go = 0;
+                ltr_flag  = 0;
+                digit0    = 4'b1111;
+                digit1    = 4'b1111;
+                digit2    = 4'b1111;
+                digit3    = 4'b1111;
+                led0      = 0;
+                timer_go  = 0;
                 timer_clr = 0;
             
-                load_counter = 0;
+                load_counter   = 0;
                 enable_counter = 1;
-                clear_counter = 0;
+                clear_counter  = 0;
                 
                 if(zero_count == 1) begin
                     next_state = count;
@@ -89,18 +89,18 @@ always_comb begin
             end
         count:
             begin
-                ltr_flag = 0;
-                led0 = 1;
-                timer_go = 1;
+                ltr_flag  = 0;
+                led0      = 1;
+                timer_go  = 1;
                 timer_clr = 0;
-                digit0 = timer_d0;
-                digit1 = timer_d1;
-                digit2 = timer_d2;
-                digit3 = timer_d3;
+                digit0    = timer_d0;
+                digit1    = timer_d1;
+                digit2    = timer_d2;
+                digit3    = timer_d3;
             
-                load_counter = 0;
+                load_counter   = 0;
                 enable_counter = 0;
-                clear_counter = 0;
+                clear_counter  = 0;
                 
                 if((stop_btn == 1'b1) || ((digit3 == 1) && (digit2 == 0) && (digit1 == 0) && (digit0 == 0))) begin
                     next_state = stop;
@@ -108,57 +108,57 @@ always_comb begin
             end
         stop:
             begin
-                ltr_flag = 0;
-                led0 = 1;
-                timer_go = 0;
+                ltr_flag  = 0;
+                led0      = 1;
+                timer_go  = 0;
                 timer_clr = 0;
-                digit0 = timer_d0;
-                digit1 = timer_d1;
-                digit2 = timer_d2;
-                digit3 = timer_d3;
+                digit0    = timer_d0;
+                digit1    = timer_d1;
+                digit2    = timer_d2;
+                digit3    = timer_d3;
             
-                load_counter = 0;
+                load_counter   = 0;
                 enable_counter = 0;
-                clear_counter = 0;
+                clear_counter  = 0;
                 
                 if(clear_btn == 1'b1) begin
                     next_state = init;
                 end
             end
         bad_stop:
-                begin
-                    ltr_flag = 0;
-                    led0 = 0;
-                    timer_go = 0;
-                    timer_clr = 0;
-                    digit0 = 4'b1001;
-                    digit1 = 4'b1001;
-                    digit2 = 4'b1001;
-                    digit3 = 4'b1001;
+            begin
+                ltr_flag  = 0;
+                led0      = 0;
+                timer_go  = 0;
+                timer_clr = 0;
+                digit0    = 4'b1001;
+                digit1    = 4'b1001;
+                digit2    = 4'b1001;
+                digit3    = 4'b1001;
+            
+                load_counter   = 0;
+                enable_counter = 0;
+                clear_counter  = 0;
                 
-                    load_counter = 0;
-                    enable_counter = 0;
-                    clear_counter = 0;
-                    
-                    if(clear_btn == 1'b1) begin
-                        next_state = init;
-                    end
+                if(clear_btn == 1'b1) begin
+                    next_state = init;
                 end
+            end
         default:
             begin
                 next_state = init;
-                ltr_flag = 0;
-                digit0 = 4'b1111;
-                digit1 = 4'b1111;
-                digit2 = 4'b1111;
-                digit3 = 4'b1111;
-                led0 = 0;
-                timer_go = 0;
-                timer_clr = 0;
+                ltr_flag   = 0;
+                digit0     = 4'b1111;
+                digit1     = 4'b1111;
+                digit2     = 4'b1111;
+                digit3     = 4'b1111;
+                led0       = 0;
+                timer_go   = 0;
+                timer_clr  = 0;
                 
-                load_counter = 0;
+                load_counter   = 0;
                 enable_counter = 0;
-                clear_counter = 0;
+                clear_counter  = 0;
             end
     endcase
 end
