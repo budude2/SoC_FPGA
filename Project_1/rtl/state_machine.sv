@@ -111,6 +111,10 @@ always_comb begin
                 load_counter = 0;
                 enable_counter = 0;
                 clear_counter = 0;
+                
+                if(clear_btn == 1'b1) begin
+                    next_state = init;
+                end
             end
         default:
             begin
