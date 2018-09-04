@@ -7,7 +7,7 @@ module state_machine
     output logic [3:0] digit0, digit1, digit2, digit3
 );
 
-typedef enum logic [4:0] {init = 5'b00001, start = 5'b00010, delay = 5'b00100, count = 5'b01000} state_type;
+typedef enum logic [4:0] {init = 5'b00001, start = 5'b00010, delay = 5'b00100, count = 5'b01000, stop = 5'b10000} state_type;
 
 state_type curr_state, next_state;
 logic load_counter, clear_counter, enable_counter, zero_count, timer_go;
@@ -79,7 +79,7 @@ always_comb begin
                 
                 if(zero_count == 1)
                     next_state = count;
-            end
+                end
         count:
             begin
                 ltr_flag = 0;
@@ -93,11 +93,25 @@ always_comb begin
                 load_counter = 0;
                 enable_counter = 0;
                 clear_counter = 0;
+                
+                if(stop_btn == 1'b1) begin
+                    next_state = stop;
+                end
             end
-//        stop:
-//            begin
-//                // Do stuff
-//            end
+        stop:
+            begin
+                ltr_flag = 0;
+                led0 = 1;
+                timer_go = 0;
+                digit0 = timer_d0;
+                digit1 = timer_d1;
+                digit2 = timer_d2;
+                digit3 = timer_d3;
+            
+                load_counter = 0;
+                enable_counter = 0;
+                clear_counter = 0;
+            end
         default:
             begin
                 next_state = init;
