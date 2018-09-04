@@ -7,7 +7,7 @@ module stop_watch_if
 
    // declaration
    //localparam  DVSR = 5000000;
-   localparam DVSR = 5000000;
+   localparam DVSR = 100000;
    logic [22:0] ms_reg;
    logic [22:0] ms_next;
    logic [3:0] d3_reg, d2_reg, d1_reg, d0_reg;
