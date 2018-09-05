@@ -3,6 +3,14 @@
 \usepackage[left=2cm, right=2cm, top=2cm]{geometry}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{float}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
 
 \title{Project 1: Reaction Timer}
 \author{Jacob Boline}
@@ -11,16 +19,16 @@
 \maketitle
 
 \section{Introduction}
-In this project I was tasked with creating and testing a design that would measure a humans response to visual stimulus. The device is required to have 3 buttons that correspond to start, stop, and clear. The basic premise of the design is to have a random delay of 2-15 seconds after the start button is pushed, but before the LED is lit. Once the LED is lit, a 4-digit display will show the number of milliseconds it takes a person to press the stop button. In addition, there are some extra features added to make the design more robust such as a state if the stop button is pushed too early, or not pushed at all. To accomplish this project Vivado 2017.2 was used to simulate, synthesize, and implement System Verilog code for a Basys 4 DDR development board.
+In this project I was tasked with creating and testing a design that would measure a humans response to visual stimulus. The device is required to have 3 buttons that correspond to start, stop, and clear. The basic premise of the design is to have a random delay of 2-15 seconds after the start button is pushed, but before the LED is lit. Once the LED is lit, a 4-digit display will show the number of milliseconds it takes a person to press the stop button. In addition, there are some extra features added to make the design more robust such as a state if the stop button is pushed too early, or not pushed at all. To accomplish this project Vivado 2017.2 was used to simulate, synthesize, and implement System Verilog code for a Basys 4 DDR development board. The project design files can be found at: \url{https://github.com/txjacob/SoC_FPGA}
 
 \section{Experimental Plan}
 For this design five fundamental Modules are needed:
 \begin{itemize}
     \item 7-seg Driver Module
     \item Random Number Generator Module
+    \item Universal Counter Module
     \item State Machine
     \item Stop Watch Module
-    \item Universal Counter Module
 \end{itemize}
 
 \subsection{7-Seg Driver Module}
@@ -35,7 +43,10 @@ The first step to building this design was to create a method for driving the 7-
 
 
 \subsection{Random Number Generator Module}
+The random number generator module is a modified version of the lfsr\_fib168pi design provided. In order to fit better into the project I modified the output to be a 4-bit number instead of a single bit. This was done by reading the first four bits of the state variable instead of using the straight polynomial variable. The 4-bits from the state variable were then passed through some combinational logic to limit the range of random numbers to be between 2 and 15. This was done by checking to see if the top 3-bits were all 1s, if they were then the two's place bit was zeroed out, if not the data was allowed to pass through. Finally, the data was summed with the number 2, and output from the module.
 
+\subsection{Universal Counter Module}
+The universal counter module is taken from Listing 4.12. It is configured to be in countdown mode so that the state machine only has to wait for a zero flag. The input of the counter is hook to the output from the random number generator multiplied by 100,000,000. This was done to convert the value in seconds to the number of 100 MHz clock cycles. Finally, three flags were created to control the counter: clear\_counter, load\_counter, and enable\_counter.
 
 \pagebreak
 \begin{figure}[H]
