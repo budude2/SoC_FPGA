@@ -122,6 +122,23 @@ This state is only entered if the stop button is pushed while in the delay state
 \end{figure}
 
 \section{Analysis}
+\begin{figure}[H]
+	\includegraphics [width=7in]{lfsr_sim.png}
+	\centering
+	\caption{Simulation of LFSR Module}
+	\label{fig:lfsr_sim}
+\end{figure}
+
+In Figure \ref{fig:lfsr_sim} the simulation for the LFSR is shown. In this simulation it is demonstrated that for every clock cycle a random number is generated.
+
+\begin{figure}[H]
+	\includegraphics [width=7in]{stopwatch_sim.png}
+	\centering
+	\caption{Simulation of the Stopwatch Module}
+	\label{fig:stopwatch_sim}
+\end{figure}
+
+In Figure \ref{fig:stopwatch_sim} it is demonstrated that the stopwatch digits will increment once every millisecond. Since this module was pulled from the textbook, the only verification that was done was checking the conversion value for going from the 100 MHz clock, to a 1 ms increment.
 
 \section{Conclusion}
 
