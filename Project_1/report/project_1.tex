@@ -36,7 +36,7 @@ For this design five fundamental Modules are needed:
 \subsection{7-Seg Driver Module}
 
 \begin{figure}[H]
-	\includegraphics [width=5in]{display_driver.eps}
+	\includegraphics [width=5in]{./figures/display_driver.eps}
 	\centering
 	\caption{Block diagram of 7-seg driver module.}
 	\label{fig:7SegDriver}
@@ -47,7 +47,7 @@ The first step to building this design was to create a method for driving the 7-
 \subsection{Random Number Generator Module}
 
 \begin{figure}[H]
-\includegraphics [width=4in]{lfsr.eps}
+\includegraphics [width=4in]{./figures/lfsr.eps}
 	\centering
 	\caption{Block diagram of LFSR module.}
 	\label{fig:LFSRmod}
@@ -58,7 +58,7 @@ The random number generator module (Figure \ref{fig:LFSRmod}) is a modified vers
 \subsection{Universal Counter Module}
 
 \begin{figure}[H]
-\includegraphics [width=4in]{counter.eps}
+\includegraphics [width=4in]{./figures/counter.eps}
 	\centering
 	\caption{Block diagram of the Universal Counter module.}
 	\label{fig:counterMod}
@@ -69,7 +69,7 @@ The universal counter module (Figure \ref{fig:counterMod}) is taken from Listing
 \subsection{Stopwatch Module}
 
 \begin{figure}[H]
-\includegraphics [width=2in]{stopwatch.eps}
+\includegraphics [width=2in]{./figures/stopwatch.eps}
 	\centering
 	\caption{Block diagram of the stopwatch module.}
 	\label{fig:stopwatchmod}
@@ -115,7 +115,7 @@ This state is only entered if the stop button is pushed while in the delay state
 
 \pagebreak
 \begin{figure}[H]
-	\includegraphics [width=3.45in]{state_diagram.eps}
+	\includegraphics [width=3.45in]{./figures/state_diagram.eps}
 	\centering
 	\caption{State diagram of the reaction timer design}
 	\label{fig:state_diagram}
@@ -123,7 +123,7 @@ This state is only entered if the stop button is pushed while in the delay state
 
 \section{Analysis}
 \begin{figure}[H]
-	\includegraphics [width=7in]{lfsr_sim.png}
+	\includegraphics [width=7in]{./figures/lfsr_sim.png}
 	\centering
 	\caption{Simulation of LFSR Module}
 	\label{fig:lfsr_sim}
@@ -132,7 +132,7 @@ This state is only entered if the stop button is pushed while in the delay state
 In Figure \ref{fig:lfsr_sim} the simulation for the LFSR is shown. In this simulation it is demonstrated that for every clock cycle a random number is generated.
 
 \begin{figure}[H]
-	\includegraphics [width=7in]{stopwatch_sim.png}
+	\includegraphics [width=7in]{./figures/stopwatch_sim.png}
 	\centering
 	\caption{Simulation of the Stopwatch Module}
 	\label{fig:stopwatch_sim}
@@ -140,6 +140,17 @@ In Figure \ref{fig:lfsr_sim} the simulation for the LFSR is shown. In this simul
 
 In Figure \ref{fig:stopwatch_sim} it is demonstrated that the stopwatch digits will increment once every millisecond. Since this module was pulled from the textbook, the only verification that was done was checking the conversion value for going from the 100 MHz clock, to a 1 ms increment.
 
+\begin{figure}[H]
+	\includegraphics [width=7in]{./figures/system_sim.png}
+	\centering
+	\caption{Simulation of the entire design showing states.}
+	\label{fig:system_sim}
+\end{figure}
+
+Figure \ref{fig:system_sim} shows a simulation of the entire system in response to simulated button presses. Shown is the system sitting in the INIT state until the start button (BTNC) is pushed. Then the system goes into the START state in order to load the counter, and immediately enters the DELAY state until the min\_tick line is asserted. Then it goes into the COUNT state where it increments the display for every millisecond until the stop button (BTNR) is pushed. Finally, the system sits in the STOP state until the clear button (BTNL) is pushed at which point it returns to the INIT state. Note: The delay state is sped up for the purposes of simulation.
+ 
 \section{Conclusion}
+From this report the processes for designing this system can be seen. The hope for this design was to create something that was simple, yet robust. By using pre-existing modules the design and verification time was cut down, and the reliability of the system was increased. In addition, some design choices were made to simplify the design process, but at the expense of using more expensive resources. However, since we are designing for a chip with plentiful resources, I believed that this was an acceptable compromise.
+
 
 \end{document}
