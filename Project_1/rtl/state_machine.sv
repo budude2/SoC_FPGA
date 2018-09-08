@@ -14,6 +14,7 @@ logic load_counter, clear_counter, enable_counter, zero_count, timer_go, timer_c
 logic [3:0] random_val, timer_d0, timer_d1, timer_d2, timer_d3;
 
 univ_bin_counter #(.N(32)) counter(.clk(clk), .reset(rst), .syn_clr(clear_counter), .load(load_counter), .en(enable_counter), .up(0), .d(100000000*random_val), .max_tick(), .min_tick(zero_count), .q());
+//univ_bin_counter #(.N(4)) counter(.clk(clk), .reset(rst), .syn_clr(clear_counter), .load(load_counter), .en(enable_counter), .up(0), .d(random_val), .max_tick(), .min_tick(zero_count), .q());
 LFSR_fib168pi rng(.clk(clk), .reset(rst), .seed(28'b1110_1100_0111_1110_0111_0110_1100), .r(random_val));
 stop_watch_if stop_watch(.clk(clk), .go(timer_go), .clr(rst | timer_clr), .d3(timer_d3), .d2(timer_d2), .d1(timer_d1), .d0(timer_d0));
 
