@@ -1,7 +1,7 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
--- Date        : Tue Sep 25 10:59:39 2018
+-- Date        : Sun Sep 30 19:48:29 2018
 -- Host        : DESKTOP-S0CCCTL running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               C:/Users/Jacob/School/SoC_FPGA/Project_2/proj_02/proj_2.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.vhdl
@@ -14,7 +14,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity blk_mem_gen_0_blk_mem_gen_prim_wrapper is
+entity blk_mem_gen_0_blk_mem_gen_prim_wrapper_init is
   port (
     doutb : out STD_LOGIC_VECTOR ( 31 downto 0 );
     clka : in STD_LOGIC;
@@ -26,10 +26,10 @@ entity blk_mem_gen_0_blk_mem_gen_prim_wrapper is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
-end blk_mem_gen_0_blk_mem_gen_prim_wrapper;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
+end blk_mem_gen_0_blk_mem_gen_prim_wrapper_init;
 
-architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_prim_wrapper is
+architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_prim_wrapper_init is
   signal \DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18_sp.ram_n_32\ : STD_LOGIC;
   signal \DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18_sp.ram_n_33\ : STD_LOGIC;
   signal \DEVICE_7SERIES.NO_BMM_INFO.SDP.WIDE_PRIM18_sp.ram_n_34\ : STD_LOGIC;
@@ -49,7 +49,7 @@ begin
       INITP_05 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_06 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_07 => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
+      INIT_00 => X"00000000000000000000000000000000000000000000000000000000DEADBEEF",
       INIT_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_03 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -194,7 +194,7 @@ end blk_mem_gen_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_prim_width is
 begin
-\prim_noinit.ram\: entity work.blk_mem_gen_0_blk_mem_gen_prim_wrapper
+\prim_init.ram\: entity work.blk_mem_gen_0_blk_mem_gen_prim_wrapper_init
      port map (
       addra(1 downto 0) => addra(1 downto 0),
       addrb(0) => addrb(0),
@@ -422,7 +422,7 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_EN_SLEEP_PIN : integer;
   attribute C_EN_SLEEP_PIN of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_EST_POWER_SUMMARY : string;
-  attribute C_EST_POWER_SUMMARY of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "Estimated Power for IP     :     2.575 mW";
+  attribute C_EST_POWER_SUMMARY of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "Estimated Power for IP     :     2.72175 mW";
   attribute C_FAMILY : string;
   attribute C_FAMILY of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "artix7";
   attribute C_HAS_AXI_ID : integer;
@@ -460,11 +460,11 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_INIT_FILE : string;
   attribute C_INIT_FILE of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "blk_mem_gen_0.mem";
   attribute C_INIT_FILE_NAME : string;
-  attribute C_INIT_FILE_NAME of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "no_coe_file_loaded";
+  attribute C_INIT_FILE_NAME of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "blk_mem_gen_0.mif";
   attribute C_INTERFACE_TYPE : integer;
   attribute C_INTERFACE_TYPE of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_LOAD_INIT_FILE : integer;
-  attribute C_LOAD_INIT_FILE of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
+  attribute C_LOAD_INIT_FILE of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 1;
   attribute C_MEM_TYPE : integer;
   attribute C_MEM_TYPE of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 1;
   attribute C_MUX_PIPELINE_STAGES : integer;
@@ -512,7 +512,7 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_WRITE_DEPTH_B : integer;
   attribute C_WRITE_DEPTH_B of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 2;
   attribute C_WRITE_MODE_A : string;
-  attribute C_WRITE_MODE_A of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "NO_CHANGE";
+  attribute C_WRITE_MODE_A of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "WRITE_FIRST";
   attribute C_WRITE_MODE_B : string;
   attribute C_WRITE_MODE_B of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "READ_FIRST";
   attribute C_WRITE_WIDTH_A : integer;
@@ -714,7 +714,7 @@ architecture STRUCTURE of blk_mem_gen_0 is
   attribute C_EN_SLEEP_PIN : integer;
   attribute C_EN_SLEEP_PIN of U0 : label is 0;
   attribute C_EST_POWER_SUMMARY : string;
-  attribute C_EST_POWER_SUMMARY of U0 : label is "Estimated Power for IP     :     2.575 mW";
+  attribute C_EST_POWER_SUMMARY of U0 : label is "Estimated Power for IP     :     2.72175 mW";
   attribute C_FAMILY : string;
   attribute C_FAMILY of U0 : label is "artix7";
   attribute C_HAS_AXI_ID : integer;
@@ -752,11 +752,11 @@ architecture STRUCTURE of blk_mem_gen_0 is
   attribute C_INIT_FILE : string;
   attribute C_INIT_FILE of U0 : label is "blk_mem_gen_0.mem";
   attribute C_INIT_FILE_NAME : string;
-  attribute C_INIT_FILE_NAME of U0 : label is "no_coe_file_loaded";
+  attribute C_INIT_FILE_NAME of U0 : label is "blk_mem_gen_0.mif";
   attribute C_INTERFACE_TYPE : integer;
   attribute C_INTERFACE_TYPE of U0 : label is 0;
   attribute C_LOAD_INIT_FILE : integer;
-  attribute C_LOAD_INIT_FILE of U0 : label is 0;
+  attribute C_LOAD_INIT_FILE of U0 : label is 1;
   attribute C_MEM_TYPE : integer;
   attribute C_MEM_TYPE of U0 : label is 1;
   attribute C_MUX_PIPELINE_STAGES : integer;
@@ -804,7 +804,7 @@ architecture STRUCTURE of blk_mem_gen_0 is
   attribute C_WRITE_DEPTH_B : integer;
   attribute C_WRITE_DEPTH_B of U0 : label is 2;
   attribute C_WRITE_MODE_A : string;
-  attribute C_WRITE_MODE_A of U0 : label is "NO_CHANGE";
+  attribute C_WRITE_MODE_A of U0 : label is "WRITE_FIRST";
   attribute C_WRITE_MODE_B : string;
   attribute C_WRITE_MODE_B of U0 : label is "READ_FIRST";
   attribute C_WRITE_WIDTH_A : integer;

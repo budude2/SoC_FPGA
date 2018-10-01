@@ -1,7 +1,7 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-// Date        : Tue Sep 25 10:59:39 2018
+// Date        : Sun Sep 30 19:48:29 2018
 // Host        : DESKTOP-S0CCCTL running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               C:/Users/Jacob/School/SoC_FPGA/Project_2/proj_02/proj_2.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.v
@@ -87,7 +87,7 @@ module blk_mem_gen_0
   (* C_EN_SAFETY_CKT = "0" *) 
   (* C_EN_SHUTDOWN_PIN = "0" *) 
   (* C_EN_SLEEP_PIN = "0" *) 
-  (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     2.575 mW" *) 
+  (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     2.72175 mW" *) 
   (* C_FAMILY = "artix7" *) 
   (* C_HAS_AXI_ID = "0" *) 
   (* C_HAS_ENA = "1" *) 
@@ -106,9 +106,9 @@ module blk_mem_gen_0
   (* C_INITA_VAL = "0" *) 
   (* C_INITB_VAL = "0" *) 
   (* C_INIT_FILE = "blk_mem_gen_0.mem" *) 
-  (* C_INIT_FILE_NAME = "no_coe_file_loaded" *) 
+  (* C_INIT_FILE_NAME = "blk_mem_gen_0.mif" *) 
   (* C_INTERFACE_TYPE = "0" *) 
-  (* C_LOAD_INIT_FILE = "0" *) 
+  (* C_LOAD_INIT_FILE = "1" *) 
   (* C_MEM_TYPE = "1" *) 
   (* C_MUX_PIPELINE_STAGES = "0" *) 
   (* C_PRIM_TYPE = "1" *) 
@@ -132,7 +132,7 @@ module blk_mem_gen_0
   (* C_WEB_WIDTH = "1" *) 
   (* C_WRITE_DEPTH_A = "4" *) 
   (* C_WRITE_DEPTH_B = "2" *) 
-  (* C_WRITE_MODE_A = "NO_CHANGE" *) 
+  (* C_WRITE_MODE_A = "WRITE_FIRST" *) 
   (* C_WRITE_MODE_B = "READ_FIRST" *) 
   (* C_WRITE_WIDTH_A = "16" *) 
   (* C_WRITE_WIDTH_B = "32" *) 
@@ -271,7 +271,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width
   wire enb;
   wire [0:0]wea;
 
-  blk_mem_gen_0_blk_mem_gen_prim_wrapper \prim_noinit.ram 
+  blk_mem_gen_0_blk_mem_gen_prim_wrapper_init \prim_init.ram 
        (.addra(addra),
         .addrb(addrb),
         .clka(clka),
@@ -282,8 +282,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_width
         .wea(wea));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
-module blk_mem_gen_0_blk_mem_gen_prim_wrapper
+(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
+module blk_mem_gen_0_blk_mem_gen_prim_wrapper_init
    (doutb,
     clka,
     enb,
@@ -326,7 +326,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
     .INITP_05(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_06(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INITP_07(256'h0000000000000000000000000000000000000000000000000000000000000000),
-    .INIT_00(256'h0000000000000000000000000000000000000000000000000000000000000000),
+    .INIT_00(256'h00000000000000000000000000000000000000000000000000000000DEADBEEF),
     .INIT_01(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_02(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_03(256'h0000000000000000000000000000000000000000000000000000000000000000),
@@ -486,14 +486,14 @@ endmodule
 (* C_DISABLE_WARN_BHV_COLL = "0" *) (* C_DISABLE_WARN_BHV_RANGE = "0" *) (* C_ELABORATION_DIR = "./" *) 
 (* C_ENABLE_32BIT_ADDRESS = "0" *) (* C_EN_DEEPSLEEP_PIN = "0" *) (* C_EN_ECC_PIPE = "0" *) 
 (* C_EN_RDADDRA_CHG = "0" *) (* C_EN_RDADDRB_CHG = "0" *) (* C_EN_SAFETY_CKT = "0" *) 
-(* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     2.575 mW" *) 
+(* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     2.72175 mW" *) 
 (* C_FAMILY = "artix7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "1" *) 
 (* C_HAS_ENB = "1" *) (* C_HAS_INJECTERR = "0" *) (* C_HAS_MEM_OUTPUT_REGS_A = "0" *) 
 (* C_HAS_MEM_OUTPUT_REGS_B = "1" *) (* C_HAS_MUX_OUTPUT_REGS_A = "0" *) (* C_HAS_MUX_OUTPUT_REGS_B = "0" *) 
 (* C_HAS_REGCEA = "0" *) (* C_HAS_REGCEB = "0" *) (* C_HAS_RSTA = "0" *) 
 (* C_HAS_RSTB = "0" *) (* C_HAS_SOFTECC_INPUT_REGS_A = "0" *) (* C_HAS_SOFTECC_OUTPUT_REGS_B = "0" *) 
 (* C_INITA_VAL = "0" *) (* C_INITB_VAL = "0" *) (* C_INIT_FILE = "blk_mem_gen_0.mem" *) 
-(* C_INIT_FILE_NAME = "no_coe_file_loaded" *) (* C_INTERFACE_TYPE = "0" *) (* C_LOAD_INIT_FILE = "0" *) 
+(* C_INIT_FILE_NAME = "blk_mem_gen_0.mif" *) (* C_INTERFACE_TYPE = "0" *) (* C_LOAD_INIT_FILE = "1" *) 
 (* C_MEM_TYPE = "1" *) (* C_MUX_PIPELINE_STAGES = "0" *) (* C_PRIM_TYPE = "1" *) 
 (* C_READ_DEPTH_A = "4" *) (* C_READ_DEPTH_B = "2" *) (* C_READ_WIDTH_A = "16" *) 
 (* C_READ_WIDTH_B = "32" *) (* C_RSTRAM_A = "0" *) (* C_RSTRAM_B = "0" *) 
@@ -501,7 +501,7 @@ endmodule
 (* C_USE_BRAM_BLOCK = "0" *) (* C_USE_BYTE_WEA = "0" *) (* C_USE_BYTE_WEB = "0" *) 
 (* C_USE_DEFAULT_DATA = "0" *) (* C_USE_ECC = "0" *) (* C_USE_SOFTECC = "0" *) 
 (* C_USE_URAM = "0" *) (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) 
-(* C_WRITE_DEPTH_A = "4" *) (* C_WRITE_DEPTH_B = "2" *) (* C_WRITE_MODE_A = "NO_CHANGE" *) 
+(* C_WRITE_DEPTH_A = "4" *) (* C_WRITE_DEPTH_B = "2" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) 
 (* C_WRITE_MODE_B = "READ_FIRST" *) (* C_WRITE_WIDTH_A = "16" *) (* C_WRITE_WIDTH_B = "32" *) 
 (* C_XDEVICEFAMILY = "artix7" *) (* ORIG_REF_NAME = "blk_mem_gen_v8_3_6" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module blk_mem_gen_0_blk_mem_gen_v8_3_6

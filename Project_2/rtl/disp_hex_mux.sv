@@ -96,6 +96,7 @@ module disp_hex_mux
          4'hc: sseg[6:0] = 7'b1000110;
          4'hd: sseg[6:0] = 7'b0100001;
          4'he: sseg[6:0] = 7'b0000110;
+         4'hf: sseg[6:0] = 7'b0001110;
          default: sseg[6:0] = 7'b1111111;  //4'hf
      endcase
      sseg[7] = 1;
