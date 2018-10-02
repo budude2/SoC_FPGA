@@ -4,7 +4,7 @@ module state_maching
 (
     input logic clk, rst, prog_btn, write_btn,
     input logic [31:0] data,
-    output logic wea, addrb, load_en, shift_en,
+    output logic wea, addrb, load_en, shift_en, disp_src,
     output logic [1:0] addra
 );
 
@@ -28,6 +28,7 @@ always_comb begin
     addrb = 0;
     load_en = 0;
     shift_en = 0;
+    disp_src = 0;
     
     case(curr_state)
         init:
@@ -54,6 +55,8 @@ always_comb begin
         
         prog:
         begin
+            disp_src = 1;
+        
             if(write_btn == 1) begin
                 load_en = 1;
                 wea = 1;
