@@ -16,8 +16,8 @@ circle_shift_reg shifter(.clk(CLK100MHZ), .rst(~CPU_RESETN), .load_en(load_en), 
 state_maching controller (.clk(CLK100MHZ), .rst(~CPU_RESETN), .prog_btn(BTNC_pulse), .write_btn(BTNC_pulse), .disp_src(disp_src), .wea(wea), .addrb(addrb), .load_en(load_en), .shift_en(shift_en), .addra(addra), .data(d_int));
 blk_mem_gen_0 bram0 (.clka(CLK100MHZ), .ena(1), .wea(wea), .addra(addra), .dina(SW), .clkb(CLK100MHZ), .enb(1), .addrb(addrb), .doutb(d_int));
 ClkDivider div(.clk(CLK100MHZ), .rst(~CPU_RESETN), .clk_div(clk_div));
-edge_detect_gate pulse_gen(.clk(CLK100MHZ), .reset(~CPU_RESETN), .level(clk_div), .tick(tick));
-edge_detect_gate pulse_gen2(.clk(CLK100MHZ), .reset(~CPU_RESETN), .level(BTNC_db), .tick(BTNC_pulse));
+edge_detect_moore pulse_gen(.clk(CLK100MHZ), .reset(~CPU_RESETN), .level(clk_div), .tick(tick));
+edge_detect_moore pulse_gen2(.clk(CLK100MHZ), .reset(~CPU_RESETN), .level(BTNC_db), .tick(BTNC_pulse));
 db_fsm debouncer(.clk(CLK100MHZ), .reset(~CPU_RESETN), .sw(BTNC), .db(BTNC_db));
 
 always_comb begin

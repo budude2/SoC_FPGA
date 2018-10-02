@@ -8,7 +8,7 @@ module state_maching
     output logic [1:0] addra
 );
 
-typedef enum logic [3:0] {init = 4'b0001, load = 4'b0010, run = 4'b0100, prog = 4'b1000} state_type;
+typedef enum logic [6:0] {init = 7'b0000001, load = 7'b0000010, run = 7'b0000100, prog = 7'b0001000, inter0 = 7'b0010000, inter1 = 7'b0100000, load_reg = 7'b1000000} state_type;
 state_type curr_state, next_state;
 
 always_ff @(posedge clk, posedge rst) begin
@@ -58,10 +58,26 @@ always_comb begin
             disp_src = 1;
         
             if(write_btn == 1) begin
-                load_en = 1;
                 wea = 1;
-                next_state = run;
+                next_state = inter0;
             end
+        end
+        
+        inter0:
+        begin
+            next_state = inter1;
+        end
+        
+        inter1:
+        begin
+            next_state = load_reg;
+        end
+        
+        load_reg:
+        begin
+            disp_src = 1;
+            load_en = 1;
+            next_state = run;
         end
     endcase
 end
