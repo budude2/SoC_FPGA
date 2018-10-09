@@ -4,11 +4,11 @@ module state_maching
 (
     input logic clk, rst, prog_btn, write_btn,
     input logic [31:0] data,
-    output logic wea, addrb, load_en, shift_en, disp_src,
-    output logic [1:0] addra
+    output logic wea, addrb, load_en, shift_en,
+    output logic [1:0] addra, disp_src
 );
 
-typedef enum logic [6:0] {init = 7'b0000001, load = 7'b0000010, run = 7'b0000100, prog = 7'b0001000, inter0 = 7'b0010000, inter1 = 7'b0100000, load_reg = 7'b1000000} state_type;
+typedef enum logic [7:0] {init = 8'b00000001, load = 8'b00000010, run = 8'b00000100, prog0 = 8'b00001000, prog1 = 8'b00010000, inter0 = 8'b00100000, inter1 = 8'b01000000, load_reg = 8'b10000000} state_type;
 state_type curr_state, next_state;
 
 always_ff @(posedge clk, posedge rst) begin
@@ -49,14 +49,25 @@ always_comb begin
             shift_en = 1;
             
             if(prog_btn == 1) begin
-                next_state = prog;
+                next_state = prog0;
             end
         end
         
-        prog:
+        prog0:
         begin
             disp_src = 1;
         
+            if(write_btn == 1) begin
+                wea = 1;
+                next_state = prog1;
+            end
+        end
+        
+        prog1:
+        begin
+            disp_src = 2;
+            addra = 1;
+            
             if(write_btn == 1) begin
                 wea = 1;
                 next_state = inter0;

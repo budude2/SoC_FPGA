@@ -6,8 +6,8 @@ module eight_digit_scroller(
     output logic [7:0] SSEG, AN
 );
 
-logic wea, load_en, shift_en, addrb, clk_div, tick, disp_src, BTNC_db, BTNC_pulse;
-logic [1:0] addra;
+logic wea, load_en, shift_en, addrb, clk_div, tick, BTNC_db, BTNC_pulse;
+logic [1:0] addra, disp_src;
 logic [3:0] hex0, hex1, hex2, hex3, hex4, hex5, hex6, hex7, seg0, seg1, seg2, seg3, seg4, seg5, seg6, seg7;
 logic [31:0] d_int;
 
@@ -40,6 +40,30 @@ always_comb begin
             hex1 = SW[7:4];
             hex2 = SW[11:8];
             hex3 = SW[15:12];
+            hex4 = 0;
+            hex5 = 0;
+            hex6 = 0;
+            hex7 = 0;
+        end
+        
+        2:
+        begin
+            hex0 = 0;
+            hex1 = 0;
+            hex2 = 0;
+            hex3 = 0;
+            hex4 = SW[3:0];
+            hex5 = SW[7:4];
+            hex6 = SW[11:8];
+            hex7 = SW[15:12];
+        end
+        
+        default:
+        begin
+            hex0 = 0;
+            hex1 = 0;
+            hex2 = 0;
+            hex3 = 0;
             hex4 = 0;
             hex5 = 0;
             hex6 = 0;
