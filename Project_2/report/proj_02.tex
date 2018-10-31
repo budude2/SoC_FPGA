@@ -53,4 +53,36 @@ The shift register features parallel loading, and shifts data in 4-bit chunks. T
 
 Figure \ref{fig:output_logic} shows the output control logic. The main 2 components are the shift register and the hexadecimal to display module. Connecting each digit of these two components is a mux. This mux is controlled by the state machine and allows the the input of the hexadecimal to display module to be controlled by the state machine. When the address line is 0 all 8 digits are driven with the output from the shift register. When the address is 1 the bottom 4 digits are driven from the 16 switches and the top 4 digits are tied to ground. For an address of 1, the bottom 4 digits are tied to ground, and the top 4 digits are driven from the 16 switches. Finally, all 8 digits are tied to ground for all other addresses. The output of the hexadecimal to display module is hooked directly up to the 7-segment, while the decimal points are tied high to turn them off.
 
+\section{Analysis}
+
+\begin{figure}[H]
+\includegraphics[width=7 in]{./figures/custom_ff.eps}
+	\centering
+	\caption{Simulation of a single loadable 4-bit register.}
+	\label{fig:custom_ff}
+\end{figure}
+
+Figure \ref{fig:custom_ff} shows the ability of a single 4-bit register to load in a nibble, hold it, then shift it out once shift\_en is asserted.
+
+\begin{figure}[H]
+\includegraphics[width=7 in]{./figures/shift_reg.eps}
+	\centering
+	\caption{Simulation of a 32-bit parallel load, parallel output shift register.}
+	\label{fig:shift_reg}
+\end{figure}
+
+Figure \ref{fig:shift_reg} demonstrates the 32-bit shift register's ability to load in one 32-bit word, hold it, and shift it in 4-bit chunks.
+
+\begin{figure}[H]
+\includegraphics[width=7 in]{./figures/top_tb_prog.eps}
+	\centering
+	\caption{Simulation of the entire system.}
+	\label{fig:top_tb}
+\end{figure}
+
+Figure \ref{fig:top_tb} demonstrates the full functionality. When the system first comes up it goes into the run state once the BRAM is initialized. Then when BTNC is pressed the prog0 state is entered. After BTNC is pressed again, prog1 state is entered. Finally, after BTNC is pressed again there is a 2 cycle delay, a shift register load, and then the system resumes normal operation. Notice that the long button presses do not trigger multiple state changes.
+
+\section{Conclusion}
+From this report the design process and verification for the system can be seen. The goal of this was to create a system that was simple to put together, and create control logic for. While I believe my design has met these goals I believe there is still room for improvement. My method for waiting for the BRAM to initialize before loading the shift register is somewhat of a "hack" and causes the system to stop functioning after a systemwide reset. This is due to the BRAM not reinitializing with the set data values from the MMI file.
+
 \end{document}
