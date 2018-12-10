@@ -1,0 +1,35 @@
+# KERNEL: UVM_INFO @ 0: reporter [RNTST] Running test my_test...
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 15: reporter [DUT] Received cmd = 1, a = 188, b =  67
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 15: reporter [DUT] Result ans = 121, cout = 0
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 25: reporter [DUT] Received cmd = 0, a = 243, b = 120
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 25: reporter [DUT] Result ans = 107, cout = 1
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 35: reporter [DUT] Received cmd = 0, a =  96, b = 225
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 35: reporter [DUT] Result ans =  65, cout = 1
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 45: reporter [DUT] Received cmd = 1, a =   3, b = 126
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 45: reporter [DUT] Result ans = 133, cout = 1
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 55: reporter [DUT] Received cmd = 1, a = 221, b =  80
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 55: reporter [DUT] Result ans = 141, cout = 0
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 65: reporter [DUT] Received cmd = 0, a = 238, b =  87
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 65: reporter [DUT] Result ans =  69, cout = 1
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 75: reporter [DUT] Received cmd = 0, a =  53, b = 146
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 75: reporter [DUT] Result ans = 199, cout = 0
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 85: reporter [DUT] Received cmd = 1, a = 178, b =   1
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 85: reporter [DUT] Result ans = 177, cout = 0
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 95: reporter [DUT] Received cmd = 1, a = 102, b = 165
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 95: reporter [DUT] Result ans = 193, cout = 1
+# KERNEL: UVM_INFO /home/runner/design.sv(24) @ 105: reporter [DUT] Received cmd = 0, a =  81, b = 126
+# KERNEL: UVM_INFO /home/runner/design.sv(25) @ 105: reporter [DUT] Result ans = 207, cout = 0
+# KERNEL: UVM_INFO /home/build/vlib1/vlib/uvm-1.2/src/base/uvm_objection.svh(1271) @ 105: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# KERNEL: UVM_INFO /home/build/vlib1/vlib/uvm-1.2/src/base/uvm_report_server.svh(856) @ 105: reporter [UVM/REPORT/SERVER] 
+# KERNEL: --- UVM Report Summary ---
+# KERNEL: 
+# KERNEL: ** Report counts by severity
+# KERNEL: UVM_INFO :     23
+# KERNEL: UVM_WARNING :  0
+# KERNEL: UVM_ERROR :    0
+# KERNEL: UVM_FATAL :    0
+# KERNEL: ** Report counts by id
+# KERNEL: [DUT]    		20
+# KERNEL: [RNTST]     		1
+# KERNEL: [TEST_DONE]     	1
+# KERNEL: [UVM/RELNOTES]   	1

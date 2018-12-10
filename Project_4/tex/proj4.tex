@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}
+
+\usepackage{listings}
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{float}
+
+\title{Project 4: Microblaze SSEG}
+\author{Jacob Boline}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+In this project I began working with the Microblaze IP and the FPRO bus. I created my own module and hooked it up to the FPRO bus. Then I wrote a driver for the microblaze and used it to interface with the switches.
+
+\section{Implementation}
+To begin I took the SSEG module and modified it to take in a value to control how quickly it swept across the 8 digits. We then took the SSEG module and wrapped it with a FPRO wrapper that contained 2 registers. Register 0 was a 32-bit register that had each nibble mapped to one of the digits. Therefor, it was possible to set the entire display with one register write. Register 1 was also 32-bits, but only the bottom 16-bits were used to control the speed of the display sweep.
+
+After generating a bitstream, I began working on the software side. First I wrote a driver that contained functions to write SSEG display data, and sweep speed. Then after testing the SSEG driver worked properly, I took the output from the switch reader function and fed it into the SSEG driver. This resulted in a display that showed the current values the switches were set to.
+
+\section{Conclusion}
+In conclusion I became familiar with programming the microblaze, and interfacing with the FPRO bus.
+
+\end{document}

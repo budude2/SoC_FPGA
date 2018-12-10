@@ -1,0 +1,45 @@
+\documentclass[11pt]{article}
+
+\usepackage{listings}
+\usepackage[left=2cm, right=2cm, top=2cm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+\lstset{ 
+breaklines=true,
+numbers=left,
+frame=single
+}
+
+\title{Project 3: UVM Testbench}
+\author{Jacob Boline}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+This project was an introduction to UVM design and simulation. Using the EDA playground website we converted the hello world testbench into an adder testbench. The code for this project can be found at \url{https://www.edaplayground.com/x/4gPg}.
+ 
+\section{Implementation}
+The DUT was fairly simple and was modified to add an a, b, and, cout, and cmd signal. Then if the command was a 0 it add, else it subtracted. In addition, the DUT displayed the command, values of a \& b, the answer of the function, and the carry out value.
+
+The sequence file was modified to produce random values between 0 and 1 for command, and random values between 0 and 256 for a \& b.
+
+Finally, the driver was modified to connect the sequencer and DUT ports for cmd, a, and b.
+
+\section{Output}
+\lstinputlisting{../uvm_output.txt}
+
+\section{Conclusion}
+From this exercise we learned the basic structure of a UVM test bench, and modified it to interface a basic adder. By adding other test fixtures to the design we can begin to learn more about UVM.
+
+
+\end{document}

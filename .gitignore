@@ -20,3 +20,7 @@ Project_1/proj_01/proj_1\.cache/
 Project_1/report/\.texpadtmp/
 
 Project_1/project_01\.zip
+
+*.dvi
+
+*.ps
